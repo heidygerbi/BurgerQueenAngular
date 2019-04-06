@@ -6,21 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { EmployeesComponent } from './employees/employees.component';
-import { EmployeeComponent } from './employees/employee/employee.component';
-import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
-import { EmployeeService } from './shared/employee.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
 import { ToastrModule } from 'ngx-toastr';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
+import { OrderService } from './shared/order.service';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesComponent,
-    EmployeeComponent,
-    EmployeeListComponent,
     OrdersComponent,
     OrderComponent
   ],
@@ -33,7 +26,7 @@ import { OrderComponent } from './orders/order/order.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [EmployeeService],
+  providers: [OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
