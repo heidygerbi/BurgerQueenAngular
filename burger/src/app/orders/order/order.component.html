@@ -1,13 +1,46 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 <div class="row">
   <div class="col-md-6">
-    <p>Info de fecha y hora</p>
+    <p>Info de fecha</p>
   </div>
   <div class="col-md-6">
     <Label>Número de orden: 001</Label>
   </div>
-  <div class="row">
-        <div class="col-md-6"></div>
-        <label for="client">Cliente:<input type="text" name="client"></label>
-      </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <p>Info de hora</p>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <input name="client" #client="ngModel" [(ngModel)]="service.formData.client" class="form-control" placeholder="client name" required>
+      <div *ngIf="client.invalid && client.touched" class="validation-error">Es un campo requerido.</div> 
+    </div>
+    <!-- <label for="client">Cliente:<input type="text" name="client"></label> -->
   </div>
 </div>
+<div class="row">
+    <div class="col-md-6">
+      <!-- <div ng-repeat="prop in list">   -->
+        <!-- <div *ngIf="{{prop.its}} === D; then thenBlock else elseBlock"></div> -->
+        <ng-template #thenBlock>Desayuno</ng-template>
+        <ng-template #elseBlock>Almuerzo / Cena</ng-template>
+      <!-- </div> -->
+    </div>
+    <div class="col-md-6">
+      <label for="num-table">Número de mesa<input type="number" name="num-table"></label>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6">
+          <select>
+              <option *ngFor='let menuList of list' [value]="menuList.item">
+                {{menuList.item}} - $ {{menuList.price}}
+              </option>
+          </select>
+      </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+      </div>
+  </form>
