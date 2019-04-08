@@ -3,7 +3,7 @@ import { OrderService } from 'src/app/shared/order.service';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
-import { Order } from 'src/app/shared/order.model';
+import { Order, OrderD } from 'src/app/shared/order.model';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -12,7 +12,7 @@ import { Order } from 'src/app/shared/order.model';
 export class OrderComponent implements OnInit {
 
   list: Order[];
-
+  listD: OrderD[];
   constructor(private service : OrderService,
     private firestore:AngularFirestore,
     private toastr : ToastrService) { }
@@ -24,9 +24,9 @@ export class OrderComponent implements OnInit {
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data() } as Order;
-          // ...item.payload.doc.data() } as Order;
-      })
+      }).filter(item => item.its==='D');
     })
+
   }
 
   resetForm(form? : NgForm){
