@@ -14,4 +14,7 @@ export class OrderService {
   getOrders(){
     return this.firestore.collection('orders').snapshotChanges();
   }
+  getTickets(){
+    return this.firestore.collection('ticket').snapshotChanges();
+  }
 }

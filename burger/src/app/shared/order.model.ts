@@ -1,11 +1,14 @@
+import { Time } from '@angular/common';
+
 export class Order {
     id: string;
     item: string;
     its: string;
     price: number;
 }
-export class Client {
-    id: string;
-    name: string;
-    email: string;
+export class Ticket {
+    client: string;
+    dateTime: Time;
+    numTable: number;
+    numOrder: number;
 }
