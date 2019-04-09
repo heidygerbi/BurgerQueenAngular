@@ -11,11 +11,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
 import { OrderService } from './shared/order.service';
+import { DateComponent } from './orders/date/date.component';
+import { InfoOrderComponent } from './orders/info-order/info-order.component';
 @NgModule({
   declarations: [
     AppComponent,
     OrdersComponent,
-    OrderComponent
+    OrderComponent,
+    DateComponent,
+    InfoOrderComponent
   ],
   imports: [
     BrowserModule,

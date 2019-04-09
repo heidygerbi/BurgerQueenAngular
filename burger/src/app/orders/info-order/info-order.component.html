@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12">
+    <p>Número de orden</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <input name="client" #client="ngModel" [(ngModel)]="service.formData.client" class="form-control" placeholder="client name" required>
+      <div *ngIf="client.invalid && client.touched" class="validation-error">Es un campo requerido.</div> 
+    </div>
+    <!-- <label for="client">Cliente:<input type="text" name="client"></label> -->
+  </div>
+</div>

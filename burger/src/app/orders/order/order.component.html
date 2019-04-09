@@ -1,24 +1,5 @@
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-<div class="row">
-  <div class="col-md-6">
-    <p>Info de fecha</p>
-  </div>
-  <div class="col-md-6">
-    <Label>Número de orden: 001</Label>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <p>Info de hora</p>
-  </div>
-  <div class="col-md-6">
-    <div class="form-group">
-      <input name="client" #client="ngModel" [(ngModel)]="service.formData.client" class="form-control" placeholder="client name" required>
-      <div *ngIf="client.invalid && client.touched" class="validation-error">Es un campo requerido.</div> 
-    </div>
-    <!-- <label for="client">Cliente:<input type="text" name="client"></label> -->
-  </div>
-</div>
+
 <div class="row">
     <div class="col-md-6">
       <!-- <div ng-repeat="prop in list">   -->
@@ -33,8 +14,8 @@
   </div>
   <div class="row">
       <div class="col-md-6">
-          <select>
-              <option *ngFor='let menuList of list' [value]="menuList.item">
+          <select (change)="onChange($event.target.value)">
+              <option *ngFor='let menuList of list' [value]="menuList.id">
                 {{menuList.item}} - $ {{menuList.price}}
               </option>
           </select>

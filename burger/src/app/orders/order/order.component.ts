@@ -18,11 +18,11 @@ export class OrderComponent implements OnInit {
     private toastr : ToastrService) { }
 
   ngOnInit() {
-    let hours = new Date().getHours+':'+new Date().getMinutes;
-    console.log("Hora: "+hours);
-    let knowTypeMenu = 'A';
-    if(hours >='6:00' && hours <='12:00') 
-      knowTypeMenu ='D';
+    let hours = new Date().getHours();
+    let minute = new Date().getMinutes();
+    let knowTypeMenu = '';
+    if(hours >=6 && hours <=12 && minute === 0) knowTypeMenu ='D';
+    else knowTypeMenu = 'A';
     this.resetForm();
     this.service.getOrders().subscribe(actionArray => {
       this.list = actionArray.map(item => {
@@ -32,9 +32,9 @@ export class OrderComponent implements OnInit {
       }).filter(item => item.its=== knowTypeMenu);
     })
   }
-// const knowTypeMenu = () => {
-//     return 'D';
-//   }  
+  onChange(selectItem) {
+    console.log(selectItem);
+}
   resetForm(form? : NgForm){
     if (form!= null)
       form.resetForm();
