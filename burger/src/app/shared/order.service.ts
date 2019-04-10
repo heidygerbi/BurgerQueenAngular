@@ -1,13 +1,13 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { Order, Client } from './order.model';
+import { Order, Ticket } from './order.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
   formData :Order;
-  formDataClient :Client;
+  formDataTicket :Ticket;
   
   constructor(private firestore:AngularFirestore) { }
 

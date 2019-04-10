@@ -21,10 +21,9 @@ export class InfoOrderComponent implements OnInit {
         return {
           // id: item.payload.doc.id,
           ...item.payload.doc.data() } as Ticket;
-      }).filter(item => Math.max(item.numOrder));
+      }).filter(items => Math.max(items.numOrder));
     })
   }
-
 }
 
 // import { Component, OnInit } from '@angular/core';

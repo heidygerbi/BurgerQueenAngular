@@ -13,6 +13,7 @@ import { OrderComponent } from './orders/order/order.component';
 import { OrderService } from './shared/order.service';
 import { DateComponent } from './orders/date/date.component';
 import { InfoOrderComponent } from './orders/info-order/info-order.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { InfoOrderComponent } from './orders/info-order/info-order.component';
     AngularFirestoreModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [OrderService],
   bootstrap: [AppComponent]
