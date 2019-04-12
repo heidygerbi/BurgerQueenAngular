@@ -14,13 +14,15 @@ import { OrderService } from './shared/order.service';
 import { DateComponent } from './orders/date/date.component';
 import { InfoOrderComponent } from './orders/info-order/info-order.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { OrderListComponent } from './orders/order-list/order-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     OrdersComponent,
     OrderComponent,
     DateComponent,
-    InfoOrderComponent
+    InfoOrderComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
