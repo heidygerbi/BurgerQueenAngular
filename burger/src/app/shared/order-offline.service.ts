@@ -5,19 +5,25 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderOfflineService {
-  arrObjTotalOrder = [];
-  private totalOrderSource = new BehaviorSubject({});
-  currentTotalOrder = this.totalOrderSource.asObservable();
+  private totalOrders = new BehaviorSubject({});
+  totalOrder = this.totalOrders.asObservable();
 
   constructor() { }
-  addTotalOrder(objTotalOrder: {}) {
-    // this.arrObjTotalOrder.slice().push(objTotalOrder);
-    //aqui se debe hacer una copia del array original
-    //acumular objetos
-    //hacer nuevo arr de order y enviarlo con next
-    this.arrObjTotalOrder.push(objTotalOrder)
-      this.totalOrderSource.next(this.arrObjTotalOrder);
-      console.log(this.arrObjTotalOrder);
 
+  // addTotalOrder entra un objeto sale un array
+
+  addTotalOrder(objTotalOrder: {}) {
+    this.totalOrders.next(objTotalOrder);
+    
+
+    // aqui se debe hacer una copia del array original
+    // acumular objetos
+    // hacer nuevo arr de order y enviarlo con next
+
+      // //funciona  
+  //   this.arrObjTotalOrder.push(objTotalOrder)
+  //   this.totalOrders.next(this.arrObjTotalOrder);
+  //     console.log('desde addTotalOrder: '+this.arrObjTotalOrder);
+  //     return this.arrObjTotalOrder;
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderOfflineService } from 'src/app/shared/order-offline.service';
+// import { OrderList } from 'src/app/shared/order.model';
 
 @Component({
   selector: 'app-order-list',
@@ -7,13 +8,29 @@ import { OrderOfflineService } from 'src/app/shared/order-offline.service';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-objTotalOrder = {};
+  objTotalOrders = {};
+  arrObjTotalOrders = [];
+  // list: OrderList;
   constructor(private data: OrderOfflineService) {
-    this.objTotalOrder = this.data.currentTotalOrder.subscribe(objTotalOrders => this.objTotalOrder = objTotalOrders) 
-    console.log(this.objTotalOrder); 
-  }
+  // console.log('este es el hermano de recibe (constructor): '+
+  this.data.totalOrder.subscribe(obj => {
+    // this.objTotalOrders = obj;
+    this.arrObjTotalOrders.push(obj)
+  });
 
+  // subscribe(arrObjTotalOrders => this.arrObjTotalOrders));
+    //this.arrObjTotalOrders = arrObjTotalOrders); 
+    // this.arrObjTotalOrder as OrderList;
+    console.log('esto es objTotalOrders: '+this.objTotalOrders);
+  }
+ 
   ngOnInit() {
+    // console.log('este es el hermano de recibe (ngOnInit): '+this.data.totalOrder.subscribe(arrObjTotalOrders => this.arrObjTotalOrders = arrObjTotalOrders));
+
+    // console.log('esto es array: '+this.arrObjTotalOrder); 
+    //  return this.arrObjTotalOrder as OrderList;
+     
+    // console.log('aqui: '+this.objTotalOrder)// as OrderList;  
     // this.data.currentTotalOrder.subscribe(objTotalOrder => console.log(this.objTotalOrder = objTotalOrder))
   
   }

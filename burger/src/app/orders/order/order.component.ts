@@ -22,9 +22,13 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
      let hours = new Date().getHours();
-    let minute = new Date().getMinutes();
+    // let minute = new Date().getMinutes();
     let knowTypeMenu = 'A';
-    if(hours >=6 && hours <=12 && minute === 0) knowTypeMenu ='D';
+     if(hours >5 && hours < 11) {
+      knowTypeMenu ='D';
+      // console.log(hours+' = '+knowTypeMenu); 
+    }
+    // console.log(hours+' = '+knowTypeMenu);
     this.resetForm();
     this.service.getOrders().subscribe(actionArray => {
       this.list = actionArray.map(item => {
@@ -33,13 +37,14 @@ export class OrderComponent implements OnInit {
           ...item.payload.doc.data() } as Order;
       }).filter(item => item.its=== knowTypeMenu);
     })
-    this.data.currentTotalOrder.subscribe(objTotalOrder => this.objTotalOrder = objTotalOrder)
+    this.data.totalOrder.subscribe(objTotalOrder => this.objTotalOrder = objTotalOrder)
   }
-  onChange(selectItem) {
-    // selectItem
-    console.log(this.list.filter(item => item.id=== selectItem)[0]);//sacar objeto -- Listo
-    console.log(this.data.addTotalOrder(this.list.filter(item => item.id=== selectItem)[0]));
-//     this.data.currentMessage.subscribe(message => this.message = message)
+  onChange(selectItem: string) {
+    // console.log('esto es seleccion: '+ selectItem); //Recolecta el ID :-)
+    // console.log('esto es list (menu): '+this.list);
+    // console.log('esto es filtro de list con ID: '+ this.list.filter(item => item.id=== selectItem)[0].item);
+    // console.log('esto es desde onChange: '+this.data.addTotalOrder(this.list.filter(item => item.id=== selectItem)[0]));
+    return this.data.addTotalOrder(this.list.filter(item => item.id=== selectItem)[0]);
   }
   resetForm(form? : NgForm){
     if (form!= null)
@@ -62,26 +67,3 @@ export class OrderComponent implements OnInit {
     this.toastr.success('Submtted successfully', 'pedido registrado.');
   }
 }
-
-
-// import { Component, OnInit } from '@angular/core';
-// import { DataService } from "../data.service";
-
-// @Component({
-//   selector: 'app-parent',
-//   template: `
-//     {{message}}
-//   `,
-//   styleUrls: ['./sibling.component.css']
-// })
-// export class ParentComponent implements OnInit {
-
-//   message:string;
-
-//   constructor(private data: DataService) { }
-
-//   ngOnInit() {
-//     this.data.currentMessage.subscribe(message => this.message = message)
-//   }
-
-// }
