@@ -12,9 +12,3 @@ export class Ticket {
     numTable: number;
     numOrder: number;
 }
-export class OrderList {
-    id: string;
-    item: string;
-    its: string;
-    price: number;
-}
