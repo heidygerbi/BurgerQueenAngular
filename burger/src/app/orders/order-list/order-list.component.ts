@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderOfflineService } from 'src/app/shared/order-offline.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-order-list',
@@ -14,9 +15,22 @@ export class OrderListComponent implements OnInit {
        this.arrObjTotalOrders.push(obj);
        this.list = this.arrObjTotalOrders.filter(item => item.item !== undefined);
      });
-     
-     console.log(this.list);
     }
    ngOnInit() {
+
+  }
+  onChangeCant(cant: number) {
+    console.log('esto es cantidad: '+cant);
+  }
+  onSubmit(tr: NgForm){
+    console.log('Entra aquí');
+    // let data = Object.assign({},form.value);
+    // delete data.id;
+    // // if (form.value.id == null)
+    //   this.firestore.collection('orders').add(data);
+    // // else
+    // //   this.firestore.doc('orders/'+form.value.id).update(data);
+    // this.resetForm(form);
+    // this.toastr.success('Submtted successfully', 'pedido registrado.');
   }
 }
