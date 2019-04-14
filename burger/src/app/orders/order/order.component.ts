@@ -40,10 +40,6 @@ export class OrderComponent implements OnInit {
     this.data.totalOrder.subscribe(objTotalOrder => this.objTotalOrder = objTotalOrder)
   }
   onChange(selectItem: string) {
-    // console.log('esto es seleccion: '+ selectItem); //Recolecta el ID :-)
-    // console.log('esto es list (menu): '+this.list);
-    // console.log('esto es filtro de list con ID: '+ this.list.filter(item => item.id=== selectItem)[0].item);
-    // console.log('esto es desde onChange: '+this.data.addTotalOrder(this.list.filter(item => item.id=== selectItem)[0]));
     return this.data.addTotalOrder(this.list.filter(item => item.id=== selectItem)[0]);
   }
   resetForm(form? : NgForm){
@@ -55,15 +51,5 @@ export class OrderComponent implements OnInit {
       its:'',
       price:0,
     }
-  }
-  onSubmit(form:NgForm){
-    let data = Object.assign({},form.value);
-    delete data.id;
-    // if (form.value.id == null)
-      this.firestore.collection('orders').add(data);
-    // else
-    //   this.firestore.doc('orders/'+form.value.id).update(data);
-    this.resetForm(form);
-    this.toastr.success('Submtted successfully', 'pedido registrado.');
   }
 }
