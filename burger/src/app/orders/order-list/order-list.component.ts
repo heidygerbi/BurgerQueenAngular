@@ -10,17 +10,20 @@ import { NgForm } from '@angular/forms';
 export class OrderListComponent implements OnInit {
   arrObjTotalOrders = [];
   list = [];
+  total: any;
   constructor(private data: OrderOfflineService) {
     this.data.totalOrder.subscribe(obj =>{
        this.arrObjTotalOrders.push(obj);
-       this.list = this.arrObjTotalOrders.filter(item => item.item !== undefined);
+       this.list= this.arrObjTotalOrders.slice();
+       this.list = this.list.filter(item => item.item !== undefined);
      });
     }
    ngOnInit() {
 
   }
-  onChangeCant(cant: number) {
-    console.log('esto es cantidad: '+cant);
+  onChangeCant(cant: number, price: number) {
+    // console.log('esto es total es: '+cant*price);
+    this.total = cant*price;
   }
   onSubmit(tr: NgForm){
     console.log('Entra aquí');

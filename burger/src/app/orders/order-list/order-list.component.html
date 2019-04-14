@@ -8,10 +8,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let menu of list">
-      <td><input type="number" min="1" max="99" id="cant" [(ngModel)]="value" (input)="onChangeCant(value)"></td>
+      <td><input type="number" min="1" max="99" id="cant" [(ngModel)]="value" (input)="onChangeCant(value, menu.price)"></td>
       <td>{{menu.item}}</td>
       <td>{{menu.price}}</td>
-      <td>{{menu.price*cant.value}}</td>
+      <td>{{total}}</td>
       <td><a class="btn text-danger" (click)="onDelete(menu.id)"><i class="fa fa-trash"></i></a></td>
     </tr>
 
