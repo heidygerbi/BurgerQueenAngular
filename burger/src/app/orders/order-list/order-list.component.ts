@@ -14,7 +14,10 @@ export class OrderListComponent implements OnInit {
        this.arrObjTotalOrders.push(obj);
        this.list= this.arrObjTotalOrders.slice();
        this.list = this.list.filter(item => item.item !== undefined);
+       console.log('this.list');
+       console.log(this.list);
      });
+
   }
    ngOnInit() {
  
