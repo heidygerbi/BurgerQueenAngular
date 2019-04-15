@@ -15,9 +15,9 @@ export class OrderListComponent implements OnInit {
        this.list= this.arrObjTotalOrders.slice();
        this.list = this.list.filter(item => item.item !== undefined);
      });
-    }
+  }
    ngOnInit() {
-
+ 
   }
   onChangeCant(cant: number, price: number, id: String) {
     this.list.forEach(element => {
@@ -26,14 +26,14 @@ export class OrderListComponent implements OnInit {
         element.total = cant*price;
       }
     });
+    return this.list;
   }
   onDelete(id: String){
     let i = 0;
     this.list.forEach(element => {
       i++;
-      if (element.id === id){ 
-        this.list.splice(element,i);
-       }
+      if (element.id === id)this.list.splice(element,i);
     });
+    return this.list;
   }
 }
