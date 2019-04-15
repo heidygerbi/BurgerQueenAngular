@@ -21,21 +21,18 @@ export class OrderComponent implements OnInit {
     private data : OrderOfflineService) { }
 
   ngOnInit() {
-     let hours = new Date().getHours();
-    // let minute = new Date().getMinutes();
-    let knowTypeMenu = 'A';
-     if(hours >5 && hours < 11) {
-      knowTypeMenu ='D';
-      // console.log(hours+' = '+knowTypeMenu); 
+    const knowTypeMenu = () => {
+      let hours = new Date().getHours();
+      if(hours >5 && hours < 11) return 'D';
+      else return 'A';
     }
-    // console.log(hours+' = '+knowTypeMenu);
     this.resetForm();
     this.service.getOrders().subscribe(actionArray => {
       this.list = actionArray.map(item => {
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data() } as Order;
-      }).filter(item => item.its=== knowTypeMenu);
+      }).filter(item => item.its=== knowTypeMenu());
     })
     this.data.totalOrder.subscribe(objTotalOrder => this.objTotalOrder = objTotalOrder)
   }
