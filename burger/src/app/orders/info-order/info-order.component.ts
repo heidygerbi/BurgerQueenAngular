@@ -11,17 +11,21 @@ import { Ticket } from 'src/app/shared/order.model';
 })
 export class InfoOrderComponent implements OnInit {
   list: Ticket[];
-  constructor(private service : OrderService,
-    private firestore:AngularFirestore,
-    private toastr : ToastrService) { }
+  listCopy = [];
+  numOrder: number;
+  constructor(private service : OrderService) { }
 
   ngOnInit() {
     this.service.getTickets().subscribe(actionArray => {
       this.list = actionArray.map(item => {
         return {
-          // id: item.payload.doc.id,
           ...item.payload.doc.data() } as Ticket;
-      }).filter(items => Math.max(items.numOrder));
+      });
+       this.listCopy = this.list.slice();
+       console.log('esto es listCopy: '+this.listCopy);
+       console.log('esto es length listCopy: '+this.listCopy.length);
+       this.numOrder = this.listCopy.length;
+       console.log('esto es numOrder: '+this.numOrder);
     })
   }
 }
