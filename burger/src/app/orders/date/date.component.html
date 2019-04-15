@@ -1,22 +1,10 @@
 <div class="row">
   <div class="col-md-12">
-    <p>Info de fecha</p>
+      <p>{{date}}</p>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
-    <Label>Info Hora</Label>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <!-- <div ng-repeat="prop in list">   -->
-      <!-- <div *ngIf="{{prop.its}} === D; then thenBlock else elseBlock"></div> -->
-      <ng-template #thenBlock>Desayuno</ng-template>
-      <ng-template #elseBlock>Almuerzo / Cena</ng-template>
-    <!-- </div> -->
-  </div>
-  <div class="col-md-6">
-    <label for="num-table">Número de mesa<input type="number" name="num-table" min="1" max="20"></label>
+  <div class="col-md-12">
+    <h1>{{typeMenu}}</h1>
   </div>
 </div>
