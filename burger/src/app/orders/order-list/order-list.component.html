@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let menu of list">
-      <td><input type="number" [(ngModel)]="name" [name]="menu.id" [(ngModel)]="id" [id]="menu.id" [(ngModel)]="value" [value]="menu.cant" (change)="onChangeCant(value, menu.price, menu.id)" min="1" max="99" maxlength="2"></td>
+      <td><input type="number" [(ngModel)]="menu.cant" (change)="onChangeCant(menu.cant, menu.price, menu.id)" min="1" max="99" maxlength="2"></td>
       <td>{{menu.item}}</td>
       <td>{{menu.price}}</td>
       <td>{{menu.total}}</td>

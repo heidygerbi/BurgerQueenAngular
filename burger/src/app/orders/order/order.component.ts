@@ -37,7 +37,8 @@ export class OrderComponent implements OnInit {
     this.data.totalOrder.subscribe(objTotalOrder => this.objTotalOrder = objTotalOrder)
   }
   onChange(selectItem: string) {
-    return this.data.addTotalOrder(this.list.filter(item => item.id=== selectItem)[0]);
+    const productoSeleccionado = this.list.filter(item => item.id=== selectItem)[0]
+    return this.data.addTotalOrder({...productoSeleccionado,cant:1});
   }
   resetForm(form? : NgForm){
     if (form!= null)

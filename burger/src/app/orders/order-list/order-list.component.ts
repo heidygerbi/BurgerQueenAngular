@@ -10,10 +10,10 @@ export class OrderListComponent implements OnInit {
   arrObjTotalOrders = [];
   list = [];
   constructor(private data: OrderOfflineService) {
-    this.data.totalOrder.subscribe(obj =>{
-       this.arrObjTotalOrders.push(obj);
-       this.list= this.arrObjTotalOrders.slice();
-       this.list = this.list.filter(item => item.item !== undefined);
+    this.data.totalOrder.subscribe(arr =>{
+    // ]this.arrObjTotalOrders = [...this.arrObjTotalOrders, obj ]
+       this.list= arr;
+      //  this.list = this.list.filter(item => item.item !== undefined);
        console.log('this.list');
        console.log(this.list);
      });
@@ -23,20 +23,9 @@ export class OrderListComponent implements OnInit {
  
   }
   onChangeCant(cant: number, price: number, id: String) {
-    this.list.forEach(element => {
-      if (element.id === id){ 
-        element.cant = cant;
-        element.total = cant*price;
-      }
-    });
-    return this.list;
+    this.data.changeCant(cant, price, id); 
   }
   onDelete(id: String){
-    let i = 0;
-    this.list.forEach(element => {
-      i++;
-      if (element.id === id)this.list.splice(element,i);
-    });
-    return this.list;
+    this.data.deleteProduct(id);
   }
 }
