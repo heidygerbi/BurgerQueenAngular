@@ -10,9 +10,13 @@
     <tr *ngFor="let menu of list">
       <td><input type="number" [(ngModel)]="menu.cant" (change)="onChangeCant(menu.cant, menu.price, menu.id)" min="1" max="99" maxlength="2"></td>
       <td>{{menu.item}}</td>
-      <td>{{menu.price}}</td>
-      <td>{{menu.total}}</td>
+      <td>{{menu.price | currency}}</td>
+      <td>{{menu.total | currency}}</td>
       <td><a class="btn text-danger" (click)="onDelete(menu.id)"><i class="fa fa-trash"></i></a></td>
+    </tr>
+    <tr>
+      <td colspan="3"><h3>Total a Pagar:</h3></td>
+      <td colspan="2">{{totalCash | currency}}</td>
     </tr>
   </tbody>
 </table>

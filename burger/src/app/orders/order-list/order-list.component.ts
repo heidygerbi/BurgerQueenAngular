@@ -9,14 +9,14 @@ import { OrderOfflineService } from 'src/app/shared/order-offline.service';
 export class OrderListComponent implements OnInit {
   arrObjTotalOrders = [];
   list = [];
+  totalCash = 0;
   constructor(private data: OrderOfflineService) {
     this.data.totalOrder.subscribe(arr =>{
-    // ]this.arrObjTotalOrders = [...this.arrObjTotalOrders, obj ]
        this.list= arr;
-      //  this.list = this.list.filter(item => item.item !== undefined);
-       console.log('this.list');
-       console.log(this.list);
      });
+    this.data.totalCash.subscribe(total =>{
+      this.totalCash= total;
+    });
 
   }
    ngOnInit() {
@@ -24,8 +24,12 @@ export class OrderListComponent implements OnInit {
   }
   onChangeCant(cant: number, price: number, id: String) {
     this.data.changeCant(cant, price, id); 
+    this.onChangeTotal(this.list);
   }
   onDelete(id: String){
     this.data.deleteProduct(id);
   }
+  onChangeTotal(arr){
+    this.data.changeTotal(arr);
+}
 }

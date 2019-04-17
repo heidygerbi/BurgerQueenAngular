@@ -7,24 +7,27 @@ import { BehaviorSubject } from 'rxjs';
 export class OrderOfflineService {
   private totalOrders = new BehaviorSubject([]);
   totalOrder = this.totalOrders.asObservable();
-  productos = [];
+
+  private totalCashs = new BehaviorSubject(0);
+  totalCash = this.totalCashs.asObservable();
+  products = [];
 
   constructor() { }
 
   addTotalOrder(objTotalOrder: {}) {
-    this.productos = [...this.productos, objTotalOrder];
-    this.totalOrders.next(this.productos);
+    this.products = [...this.products, objTotalOrder];
+    this.totalOrders.next(this.products);
   }
 
   deleteProduct(id: String){
-    this.productos = this.productos.filter(element => {
+    this.products = this.products.filter(element => {
       return (element.id !== id);
     });
-    this.totalOrders.next(this.productos);
+    this.totalOrders.next(this.products);
   }
 
   changeCant(cant: number, price: number, id: String) {
-    this.productos = this.productos.map(element => {
+    this.products = this.products.map(element => {
       if (element.id === id){
         return {
           ...element,
@@ -34,6 +37,13 @@ export class OrderOfflineService {
       }
       return element;
     });
-    this.totalOrders.next(this.productos);
+    this.totalOrders.next(this.products);
+  }
+  changeTotal(products){
+    console.log(products)
+    const sum = products.total.reduce((a , b) => a + b);
+    console.log(sum);    
+    this.totalCashs.next(sum);
+
   }
 }
