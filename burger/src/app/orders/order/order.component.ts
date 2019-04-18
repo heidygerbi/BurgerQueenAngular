@@ -12,17 +12,12 @@ import { OrderOfflineService } from 'src/app/shared/order-offline.service';
 export class OrderComponent implements OnInit {
   objTotalOrder = {};
   list: Order[];
-  menu = 'D';
+  menu = '';
   constructor(private service : OrderService,
   private data : OrderOfflineService) { }
 
   ngOnInit() {
-    this.knowTypeMenu(5,19);
-    // const knowTypeMenu = () => {
-    //   let hours = new Date().getHours();
-    //   if(hours >5 && hours < 11) return 'D';
-    //   else return 'A';
-    // }
+    this.knowTypeMenu(5,19); //según configuración del sistema
     this.data.menuList.subscribe(typeMenu => this.menu = typeMenu)
     this.service.getOrders().subscribe(actionArray => {
       this.list = actionArray.map(item => {
@@ -34,8 +29,8 @@ export class OrderComponent implements OnInit {
     this.data.totalOrder.subscribe(objTotalOrder => this.objTotalOrder = objTotalOrder)
   }
   onChange(selectItem: string) {
-    const productoSeleccionado = this.list.filter(item => item.id=== selectItem)[0];
-    this.data.addTotalOrder({...productoSeleccionado,cant:1,total:productoSeleccionado.price});
+    const selectProduct = this.list.filter(item => item.id === selectItem)[0];
+    this.data.addTotalOrder({...selectProduct, cant: 1, total: selectProduct.price});
     this.data.changeTotal();
   }
   knowTypeMenu(initialD: number, initialA: number){

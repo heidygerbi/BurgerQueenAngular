@@ -15,6 +15,8 @@ import { DateComponent } from './orders/date/date.component';
 import { InfoOrderComponent } from './orders/info-order/info-order.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { OrderListComponent } from './orders/order-list/order-list.component';
+import { SessionComponent } from './session/session.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { OrderListComponent } from './orders/order-list/order-list.component';
     OrderComponent,
     DateComponent,
     InfoOrderComponent,
-    OrderListComponent
+    OrderListComponent,
+    SessionComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
