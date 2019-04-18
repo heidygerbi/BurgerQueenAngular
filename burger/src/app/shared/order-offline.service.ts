@@ -10,6 +10,10 @@ export class OrderOfflineService {
 
   private totalCashs = new BehaviorSubject(0);
   totalCash = this.totalCashs.asObservable();
+
+  private menuLists = new BehaviorSubject('');
+  menuList = this.menuLists.asObservable();
+  
   products = [];
 
   constructor() { }
@@ -39,11 +43,18 @@ export class OrderOfflineService {
     });
     this.totalOrders.next(this.products);
   }
-  changeTotal(products){
-    console.log(products)
-    const sum = products.total.reduce((a , b) => a + b);
-    console.log(sum);    
+  changeTotal(){
+    const arrTotal=[];
+    this.products.filter(element => arrTotal.push(element.total));
+    const sum= arrTotal.reduce((a , b) => a + b, 0);
     this.totalCashs.next(sum);
 
+  }
+  typeMenu(initialD: number, initialA: number){
+    let hours = new Date().getHours();
+    let menu = '';
+    if(hours >=initialD && hours < initialA) menu = 'D';
+    else menu = 'A';
+    this.menuLists.next(menu);
   }
 }

@@ -19,17 +19,15 @@ export class OrderListComponent implements OnInit {
     });
 
   }
-   ngOnInit() {
+  ngOnInit() {
  
   }
   onChangeCant(cant: number, price: number, id: String) {
-    this.data.changeCant(cant, price, id); 
-    this.onChangeTotal(this.list);
+    this.data.changeCant(cant, price, id);
+    this.data.changeTotal();
   }
   onDelete(id: String){
     this.data.deleteProduct(id);
+    this.data.changeTotal();
   }
-  onChangeTotal(arr){
-    this.data.changeTotal(arr);
-}
 }

@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class="col-md-12 form-group">
-      <input name="client" class="form-control" placeholder="client name" required>
+      <input name="client" class="form-control" placeholder="client name" required (change)="sendInfoOrder()"> 
       <!-- <div *ngIf="client.invalid && client.touched" class="validation-error">Es un campo requerido.</div>  -->
       <!-- #client="ngModel" [(ngModel)]="service.formDataTicket.client"  -->
   </div>

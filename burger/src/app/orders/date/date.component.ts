@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderOfflineService } from 'src/app/shared/order-offline.service';
 
 @Component({
   selector: 'app-date',
@@ -9,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class DateComponent implements OnInit {
   date = Date();
   typeMenu = 'Desayuno';
-  constructor() { }
+  constructor(private data : OrderOfflineService) { 
+    this.data.menuList.subscribe(menu =>{
+      if(menu === 'D' ) this.typeMenu = 'Desayuno';
+      if(menu === 'A' ) this.typeMenu = 'Almuerzo';
+    });
+  }
   ngOnInit() {
   }
 }

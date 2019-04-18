@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/shared/order.service';
-import { NgForm } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { ToastrService } from 'ngx-toastr';
 import { Ticket } from 'src/app/shared/order.model';
 @Component({
   selector: 'app-info-order',
@@ -22,11 +19,11 @@ export class InfoOrderComponent implements OnInit {
           ...item.payload.doc.data() } as Ticket;
       });
        this.listCopy = this.list.slice();
-       console.log('esto es listCopy: '+this.listCopy);
-       console.log('esto es length listCopy: '+this.listCopy.length);
        this.numOrder = this.listCopy.length;
-       console.log('esto es numOrder: '+this.numOrder);
     })
+  }
+  sendInfoOrder(){
+    console.log('entra aqui');
   }
 }
 

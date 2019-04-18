@@ -7,7 +7,7 @@
     <th></th>
   </thead>
   <tbody>
-    <tr *ngFor="let menu of list">
+    <tr *ngFor="let menu of list" (change)="onChangeTotal()">
       <td><input type="number" [(ngModel)]="menu.cant" (change)="onChangeCant(menu.cant, menu.price, menu.id)" min="1" max="99" maxlength="2"></td>
       <td>{{menu.item}}</td>
       <td>{{menu.price | currency}}</td>
@@ -16,7 +16,7 @@
     </tr>
     <tr>
       <td colspan="3"><h3>Total a Pagar:</h3></td>
-      <td colspan="2">{{totalCash | currency}}</td>
+      <td colspan="2"><h3>{{totalCash | currency}}</h3></td>
     </tr>
   </tbody>
 </table>
