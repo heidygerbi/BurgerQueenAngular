@@ -58,3 +58,12 @@ export class OrderOfflineService {
     this.menuLists.next(menu);
   }
 }
+// import { Injectable } from '@angular/core';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class OrderOfflineService {
+
+//   constructor() { }
+// }

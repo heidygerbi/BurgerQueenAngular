@@ -1,16 +1,9 @@
-<!-- <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)"> -->
-
-
-  <div class="row">
-      <div class="col-md-6">
-          <select (change)="onChange($event.target.value)">
-              <option *ngFor='let menuList of list' [value]="menuList.id">
-                {{menuList.item}} - $ {{menuList.price}}
-              </option>
-          </select>
-      </div>
-    </div>
-    <!-- <div class="form-group">
-        <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
-      </div>
-  </form> -->
+<div class="row">
+  <div class="col-md-6">
+      <select (change)="onChange($event.target.value)">
+          <option *ngFor='let menuList of list' [value]="menuList.id">
+            {{menuList.item}} - $ {{menuList.price}}
+          </option>
+      </select>
+  </div>
+</div>

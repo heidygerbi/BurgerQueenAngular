@@ -1,5 +1,3 @@
-import { Time } from '@angular/common';
-
 export class Order {
     id: string;
     item: string;
@@ -8,7 +6,7 @@ export class Order {
 }
 export class Ticket {
     client: string;
-    dateTime: Time;
+    dateTime: string;
     numTable: number;
     numOrder: number;
 }
