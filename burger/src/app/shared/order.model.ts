@@ -10,3 +10,8 @@ export class Ticket {
     numTable: number;
     numOrder: number;
 }
+export class User {
+    name: string;
+    password: string;
+    level: string;
+}
