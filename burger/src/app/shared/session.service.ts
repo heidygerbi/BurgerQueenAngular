@@ -5,12 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SessionService {
-  private waiteronNames = new BehaviorSubject([]);
-  waiteronName = this.waiteronNames.asObservable();
+  private userNames = new BehaviorSubject([]);
+  userName = this.userNames.asObservable();
   constructor() { }
-  login(username:string, password:string) {
-    console.log('email: '+username);
-    console.log('pass: '+password);
+  login(objInfUser: {}) {
+
 
   }
 }

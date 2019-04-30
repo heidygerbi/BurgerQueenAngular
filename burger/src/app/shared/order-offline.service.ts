@@ -13,6 +13,9 @@ export class OrderOfflineService {
 
   private menuLists = new BehaviorSubject('');
   menuList = this.menuLists.asObservable();
+
+  private objInfOrders = new BehaviorSubject({});
+  objInfOrder = this.objInfOrders.asObservable();
   
   products = [];
 
@@ -57,13 +60,16 @@ export class OrderOfflineService {
     else menu = 'A';
     this.menuLists.next(menu);
   }
+  infOrder(infOrder: {}){
+    this.objInfOrders.next(infOrder);
+  }
+  submit(){
+    const arrTotal = {
+      date: Date(),
+      infoItems: this.products,
+      infoOrder: this.objInfOrder,
+      nameWaiteron: '',
+      total: this.totalCash
+    } 
+  }
 }
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class OrderOfflineService {
-
-//   constructor() { }
-// }
