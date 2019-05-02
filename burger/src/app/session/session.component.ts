@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/shared/order.model';
 import { OrderService } from '../shared/order.service';
 import { OrderOfflineService } from 'src/app/shared/order-offline.service';
+import { SessionService } from 'src/app/shared/session.service';
 
 @Component({
   selector: 'app-session',
@@ -12,7 +13,11 @@ import { OrderOfflineService } from 'src/app/shared/order-offline.service';
 export class SessionComponent implements OnInit {
   userIdem: {};
   listUser: User[];
-  constructor(private router: Router, private service: OrderService, private data : OrderOfflineService) { }
+  constructor(
+    private router: Router, 
+    private service: OrderService, 
+    private data : OrderOfflineService, 
+    private dataSession: SessionService) { }
 
   ngOnInit() {
     this.service.getUser().subscribe(userArray => {
@@ -25,24 +30,9 @@ export class SessionComponent implements OnInit {
     // console.log(this.listUser);
   }
 
-  navegate(level:string){
-     switch (level) {
-      case 'M': 
-        this.router.navigateByUrl('waiteron');
-        break;
-      case 'C': 
-        this.router.navigateByUrl('index');//por cambiar
-        break;
-        case 'A': 
-        this.router.navigateByUrl('index');//por cambiar
-        break;
-      default:
-        this.router.navigateByUrl('');
-        break;        
-    }
-  }
+
   logIn(username: string, password: string) {
     this.userIdem= this.listUser.filter(item => (item.name === username && item.password === password));
-    this.userIdem[0] !== undefined ? this.navegate(this.userIdem[0].level) : this.router.navigateByUrl('');
+    this.dataSession.login(this.userIdem[0]);
   }
 }

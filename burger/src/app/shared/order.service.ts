@@ -15,7 +15,7 @@ export class OrderService {
     return this.firestore.collection('orders').snapshotChanges();
   }
   getTickets(){
-    return this.firestore.collection('ticket').snapshotChanges();
+    return this.firestore.collection('ticket').snapshotChanges(); //esto se usará para la HU2 (cocina)
   }
   getUser(){
     return this.firestore.collection('user').snapshotChanges();
