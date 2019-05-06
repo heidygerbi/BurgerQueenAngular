@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { OrdersComponent } from './orders/orders.component';
@@ -21,6 +21,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SessionService } from './shared/session.service';
 import { UserService } from './shared/user.service';
 import { RouterModule } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [

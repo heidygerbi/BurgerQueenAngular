@@ -1,7 +1,7 @@
-import { Order } from './order.model';
+// import { Order } from './order.model';
 
-describe('Order', () => {
-  it('should create an instance', () => {
-    expect(new Order()).toBeTruthy();
-  });
-});
+// describe('Order', () => {
+//   it('should create an instance', () => {
+//     expect(new Order()).toBeTruthy();
+//   });
+// });
